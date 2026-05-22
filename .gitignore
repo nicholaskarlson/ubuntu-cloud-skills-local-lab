@@ -1,0 +1,15 @@
+# local receipts and temp output
+receipts/*.txt
+!receipts/samples/*.txt
+.tmp/
+.cache/
+
+# Python
+__pycache__/
+.pytest_cache/
+.venv/
+
+# OS/editor
+.DS_Store
+.vscode/
+.idea/
