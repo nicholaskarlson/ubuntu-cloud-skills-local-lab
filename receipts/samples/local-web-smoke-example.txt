@@ -1,0 +1,18 @@
+Local web smoke-test receipt
+
+Command:
+
+make lab-smoke
+
+Expected shape:
+
+docker compose up -d
+curl -fsS http://localhost:8080 > /tmp/ubuntu-cloud-skills-local-lab.html
+grep -q "Ubuntu Cloud Skills Local Lab" /tmp/ubuntu-cloud-skills-local-lab.html
+docker compose ps
+OK: local web lab responded at http://localhost:8080
+
+Notes:
+
+- This proves the local web container responded.
+- It does not require a paid cloud account.

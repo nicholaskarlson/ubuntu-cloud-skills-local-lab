@@ -1,0 +1,12 @@
+Docker version receipt
+
+2026-05-22T09:00:00-07:00
+
+Docker version 27.x.x, build EXAMPLE
+Docker Compose version v2.x.x
+
+Notes:
+
+- This is a sample receipt.
+- Real receipts belong in receipts/*.txt and are ignored by Git.
+- Do not include secrets in receipts.
