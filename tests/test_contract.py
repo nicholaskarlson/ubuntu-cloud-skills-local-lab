@@ -20,16 +20,21 @@ class TestLocalLabContract(unittest.TestCase):
             "docs/proof-receipts.md",
             "lessons/01-local-publishing-stack.md",
             "lessons/02-files-logs-container-lifecycle.md",
+            "lessons/03-local-backups-and-restore.md",
             "scripts/check_env.sh",
             "scripts/write_receipt.sh",
             "scripts/show_local_stack.sh",
             "scripts/logs_receipt.sh",
             "scripts/container_lifecycle_receipt.sh",
+            "scripts/backup_public.sh",
+            "scripts/backup_receipt.sh",
+            "scripts/restore_public_backup.sh",
             ".github/workflows/verify.yml",
             "receipts/samples/docker-version-example.txt",
             "receipts/samples/local-web-smoke-example.txt",
             "receipts/samples/local-publishing-stack-receipt-example.txt",
             "receipts/samples/container-lifecycle-receipt-example.txt",
+            "receipts/samples/backup-restore-receipt-example.txt",
         ]
         for rel in required:
             self.assertTrue((ROOT / rel).exists(), rel)
@@ -47,6 +52,7 @@ class TestLocalLabContract(unittest.TestCase):
             "[Lesson 2: Files, Logs, and the Container Lifecycle](lessons/02-files-logs-container-lifecycle.md)",
             text,
         )
+        self.assertIn("[Lesson 3: Local Backups and Restore](lessons/03-local-backups-and-restore.md)", text)
         self.assertIn("[Proof Receipts](docs/proof-receipts.md)", text)
 
     def test_compose_uses_local_web_port(self):
@@ -61,6 +67,10 @@ class TestLocalLabContract(unittest.TestCase):
         self.assertIn("lab-smoke-receipt:", text)
         self.assertIn("logs-receipt:", text)
         self.assertIn("lifecycle-receipt:", text)
+        self.assertIn("backup-public:", text)
+        self.assertIn("backup-receipt:", text)
+        self.assertIn("restore-public:", text)
+        self.assertIn("backup-list:", text)
         self.assertIn("inspect-stack:", text)
         self.assertIn("check-env:", text)
         self.assertIn("receipt-note:", text)
@@ -89,6 +99,14 @@ class TestLocalLabContract(unittest.TestCase):
         self.assertIn("make lifecycle-receipt", text)
         self.assertIn("start -> request -> status -> logs -> stop -> receipt", text)
 
+
+    def test_lesson_3_teaches_backup_and_restore(self):
+        text = (ROOT / "lessons/03-local-backups-and-restore.md").read_text(encoding="utf-8")
+        self.assertIn("make backup-public", text)
+        self.assertIn("make backup-receipt", text)
+        self.assertIn("make restore-public", text)
+        self.assertIn("site files -> backup archive -> checksum -> restore test -> receipt", text)
+
     def test_proof_receipts_warns_against_secrets(self):
         text = (ROOT / "docs/proof-receipts.md").read_text(encoding="utf-8").lower()
         self.assertIn("never put", text)
@@ -100,6 +118,7 @@ class TestLocalLabContract(unittest.TestCase):
         self.assertIn("Independent creator publishing demo", text)
         self.assertIn("The Local Cloud Notebook", text)
         self.assertIn("Logs and Lifecycle", text)
+        self.assertIn("Backups and Restore", text)
         self.assertIn("styles.css", text)
 
     def test_write_receipt_script_is_safe_shell_script(self):
@@ -119,6 +138,28 @@ class TestLocalLabContract(unittest.TestCase):
         lifecycle = (ROOT / "scripts/container_lifecycle_receipt.sh").read_text(encoding="utf-8")
         self.assertIn("docker compose down", lifecycle)
         self.assertIn("trap cleanup EXIT", lifecycle)
+
+
+    def test_backup_restore_scripts_are_safe_shell_scripts(self):
+        for rel in [
+            "scripts/backup_public.sh",
+            "scripts/backup_receipt.sh",
+            "scripts/restore_public_backup.sh",
+        ]:
+            text = (ROOT / rel).read_text(encoding="utf-8")
+            self.assertIn("set -euo pipefail", text)
+        backup = (ROOT / "scripts/backup_public.sh").read_text(encoding="utf-8")
+        self.assertIn("tar -czf", backup)
+        self.assertIn("sha256sum", backup)
+        restore = (ROOT / "scripts/restore_public_backup.sh").read_text(encoding="utf-8")
+        self.assertIn("tar -tzf", restore)
+        self.assertIn("public/index.html", restore)
+        self.assertIn("public/styles.css", restore)
+
+    def test_gitignore_ignores_local_backups(self):
+        text = (ROOT / ".gitignore").read_text(encoding="utf-8")
+        self.assertIn("backups/*.tar.gz", text)
+        self.assertIn("backups/*.tar.gz.sha256", text)
 
     def test_github_actions_runs_make_verify(self):
         text = (ROOT / ".github/workflows/verify.yml").read_text(encoding="utf-8")

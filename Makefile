@@ -1,4 +1,4 @@
-.PHONY: help verify check-env up down logs ps inspect-stack lab-smoke lab-smoke-receipt logs-receipt lifecycle-receipt receipt-version receipt-note clean
+.PHONY: help verify check-env up down logs ps inspect-stack lab-smoke lab-smoke-receipt logs-receipt lifecycle-receipt backup-public backup-receipt restore-public backup-list receipt-version receipt-note clean
 
 help:
 	@echo "Targets:"
@@ -12,6 +12,10 @@ help:
 	@echo "  make lab-smoke-receipt  - run smoke test and save a local receipt"
 	@echo "  make logs-receipt       - save recent container logs as a local receipt"
 	@echo "  make lifecycle-receipt  - run start/request/logs/stop workflow and save receipt"
+	@echo "  make backup-public      - create a timestamped backup of public/"
+	@echo "  make backup-receipt     - create a public/ backup and save a receipt"
+	@echo "  make restore-public     - restore public/ from BACKUP=backups/file.tar.gz"
+	@echo "  make backup-list        - list local public/ backup archives"
 	@echo "  make down               - stop the local web lab"
 	@echo "  make receipt-version    - save Docker version receipt"
 	@echo "  make receipt-note       - write a manual receipt from stdin"
@@ -65,6 +69,23 @@ logs-receipt:
 
 lifecycle-receipt:
 	bash scripts/container_lifecycle_receipt.sh
+
+backup-public:
+	bash scripts/backup_public.sh
+
+backup-receipt:
+	bash scripts/backup_receipt.sh
+
+restore-public:
+	@if [ -z "$${BACKUP:-}" ]; then \
+	  echo "Usage: make restore-public BACKUP=backups/YYYYMMDD-HHMMSS-public-site.tar.gz"; \
+	  exit 2; \
+	fi
+	bash scripts/restore_public_backup.sh "$$BACKUP"
+
+backup-list:
+	@mkdir -p backups
+	@find backups -maxdepth 1 -type f -name '*-public-site.tar.gz' -print | sort || true
 
 down:
 	docker compose down

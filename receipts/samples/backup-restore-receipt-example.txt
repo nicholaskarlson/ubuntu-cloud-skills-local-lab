@@ -1,0 +1,29 @@
+Ubuntu Cloud Skills Local Lab receipt
+Created: 2026-05-22T13:00:00-07:00
+Label: public-site-backup
+
+Public site backup receipt
+
+2026-05-22T13:00:00-07:00
+
+Command: make backup-receipt
+
+Public site backup
+
+Backup archive: backups/20260522-130000-public-site.tar.gz
+Checksum file:  backups/20260522-130000-public-site.tar.gz.sha256
+Manifest file:  .tmp/20260522-130000-public-site-manifest.txt
+
+Files included:
+public/.gitkeep
+public/index.html
+public/styles.css
+
+Checksum:
+EXAMPLE_SHA256  backups/20260522-130000-public-site.tar.gz
+
+Notes:
+
+- This is a sample receipt.
+- Real backup archives and real receipts are ignored by Git.
+- Do not store secrets, customer data, API tokens, or private keys in receipts.
