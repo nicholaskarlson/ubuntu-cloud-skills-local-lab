@@ -1,4 +1,4 @@
-.PHONY: help verify check-env up down logs ps lab-smoke lab-smoke-receipt receipt-version receipt-note clean
+.PHONY: help verify check-env up down logs ps inspect-stack lab-smoke lab-smoke-receipt logs-receipt lifecycle-receipt receipt-version receipt-note clean
 
 help:
 	@echo "Targets:"
@@ -6,9 +6,12 @@ help:
 	@echo "  make check-env          - check required local tools"
 	@echo "  make up                 - start the local web lab"
 	@echo "  make ps                 - show running containers"
+	@echo "  make inspect-stack      - inspect site files and Compose service status"
 	@echo "  make logs               - show web container logs"
 	@echo "  make lab-smoke          - start lab and confirm local web page responds"
 	@echo "  make lab-smoke-receipt  - run smoke test and save a local receipt"
+	@echo "  make logs-receipt       - save recent container logs as a local receipt"
+	@echo "  make lifecycle-receipt  - run start/request/logs/stop workflow and save receipt"
 	@echo "  make down               - stop the local web lab"
 	@echo "  make receipt-version    - save Docker version receipt"
 	@echo "  make receipt-note       - write a manual receipt from stdin"
@@ -25,6 +28,9 @@ up:
 
 ps:
 	docker compose ps
+
+inspect-stack:
+	bash scripts/show_local_stack.sh
 
 logs:
 	docker compose logs web
@@ -53,6 +59,12 @@ lab-smoke-receipt:
 	  echo; \
 	  echo "OK: local web lab responded at http://localhost:8080"; \
 	} | tee "$$tmp"; bash scripts/write_receipt.sh local-web-smoke < "$$tmp"; rm -f "$$tmp"'
+
+logs-receipt:
+	bash scripts/logs_receipt.sh
+
+lifecycle-receipt:
+	bash scripts/container_lifecycle_receipt.sh
 
 down:
 	docker compose down

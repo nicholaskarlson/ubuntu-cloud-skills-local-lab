@@ -14,17 +14,21 @@ Start here:
 
 - [Quickstart](docs/quickstart.md)
 - [Lesson 1: Local Publishing Stack](lessons/01-local-publishing-stack.md)
+- [Lesson 2: Files, Logs, and the Container Lifecycle](lessons/02-files-logs-container-lifecycle.md)
 - [Proof Receipts](docs/proof-receipts.md)
 - [Learning Contract](docs/learning-contract.md)
 - [Book Series Plan](docs/book-series-plan.md)
 
-The first lab runs locally with Docker and does not require a paid cloud account.
+The first labs run locally with Docker and do not require a paid cloud account.
 
 ## Lessons
 
 - [Lesson 1: Local Publishing Stack](lessons/01-local-publishing-stack.md)
+- [Lesson 2: Files, Logs, and the Container Lifecycle](lessons/02-files-logs-container-lifecycle.md)
 
 Lesson 1 turns the simple web server into a tiny independent creator publishing demo. It introduces the key pattern for the series: edit local site files, run the site in Docker, verify the result, inspect logs, save receipts, and stop the lab cleanly.
+
+Lesson 2 slows down the workflow and teaches the daily rhythm of small server administration: inspect files, check service status, read logs, save log receipts, run a full container lifecycle receipt, and cleanly stop the lab.
 
 ## Who this is for
 
