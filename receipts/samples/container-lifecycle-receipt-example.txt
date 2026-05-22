@@ -1,0 +1,30 @@
+Container lifecycle receipt
+
+2026-05-22T12:30:00-07:00
+
+Command: make lifecycle-receipt
+
+Starting local web service...
+Container ubuntu-cloud-skills-local-lab-web-1 Started
+
+Fetching local page...
+OK: local page contained expected title
+
+Compose status:
+NAME                                  IMAGE               SERVICE   STATUS         PORTS
+ubuntu-cloud-skills-local-lab-web-1   nginx:1.27-alpine   web       Up 2 seconds   0.0.0.0:8080->80/tcp
+
+Recent web logs:
+web-1  | 172.x.x.x - - [DATE] "GET / HTTP/1.1" 200 ...
+
+Stopping local web service...
+Container ubuntu-cloud-skills-local-lab-web-1 Removed
+Network ubuntu-cloud-skills-local-lab_default Removed
+
+OK: lifecycle completed and lab was stopped
+
+Notes:
+
+- This is a sample receipt.
+- Real receipts belong in receipts/*.txt and are ignored by Git.
+- Do not include secrets in receipts.

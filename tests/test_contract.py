@@ -19,12 +19,17 @@ class TestLocalLabContract(unittest.TestCase):
             "docs/quickstart.md",
             "docs/proof-receipts.md",
             "lessons/01-local-publishing-stack.md",
+            "lessons/02-files-logs-container-lifecycle.md",
             "scripts/check_env.sh",
             "scripts/write_receipt.sh",
+            "scripts/show_local_stack.sh",
+            "scripts/logs_receipt.sh",
+            "scripts/container_lifecycle_receipt.sh",
             ".github/workflows/verify.yml",
             "receipts/samples/docker-version-example.txt",
             "receipts/samples/local-web-smoke-example.txt",
             "receipts/samples/local-publishing-stack-receipt-example.txt",
+            "receipts/samples/container-lifecycle-receipt-example.txt",
         ]
         for rel in required:
             self.assertTrue((ROOT / rel).exists(), rel)
@@ -34,10 +39,14 @@ class TestLocalLabContract(unittest.TestCase):
         self.assertIn("paid cloud account", text)
         self.assertIn("local-first", text)
 
-    def test_readme_links_quickstart_and_lesson_1(self):
+    def test_readme_links_lessons_and_receipts(self):
         text = (ROOT / "README.md").read_text(encoding="utf-8")
         self.assertIn("[Quickstart](docs/quickstart.md)", text)
         self.assertIn("[Lesson 1: Local Publishing Stack](lessons/01-local-publishing-stack.md)", text)
+        self.assertIn(
+            "[Lesson 2: Files, Logs, and the Container Lifecycle](lessons/02-files-logs-container-lifecycle.md)",
+            text,
+        )
         self.assertIn("[Proof Receipts](docs/proof-receipts.md)", text)
 
     def test_compose_uses_local_web_port(self):
@@ -45,11 +54,14 @@ class TestLocalLabContract(unittest.TestCase):
         self.assertIn('"8080:80"', text)
         self.assertIn("nginx:", text)
 
-    def test_makefile_has_non_docker_verify_and_docker_receipt_smoke(self):
+    def test_makefile_has_non_docker_verify_and_docker_receipt_targets(self):
         text = (ROOT / "Makefile").read_text(encoding="utf-8")
         self.assertIn("verify:", text)
         self.assertIn("lab-smoke:", text)
         self.assertIn("lab-smoke-receipt:", text)
+        self.assertIn("logs-receipt:", text)
+        self.assertIn("lifecycle-receipt:", text)
+        self.assertIn("inspect-stack:", text)
         self.assertIn("check-env:", text)
         self.assertIn("receipt-note:", text)
 
@@ -70,6 +82,13 @@ class TestLocalLabContract(unittest.TestCase):
         self.assertIn("make down", text)
         self.assertIn("site files -> web server container", text)
 
+    def test_lesson_2_teaches_logs_and_lifecycle(self):
+        text = (ROOT / "lessons/02-files-logs-container-lifecycle.md").read_text(encoding="utf-8")
+        self.assertIn("make inspect-stack", text)
+        self.assertIn("make logs-receipt", text)
+        self.assertIn("make lifecycle-receipt", text)
+        self.assertIn("start -> request -> status -> logs -> stop -> receipt", text)
+
     def test_proof_receipts_warns_against_secrets(self):
         text = (ROOT / "docs/proof-receipts.md").read_text(encoding="utf-8").lower()
         self.assertIn("never put", text)
@@ -80,6 +99,7 @@ class TestLocalLabContract(unittest.TestCase):
         text = (ROOT / "public/index.html").read_text(encoding="utf-8")
         self.assertIn("Independent creator publishing demo", text)
         self.assertIn("The Local Cloud Notebook", text)
+        self.assertIn("Logs and Lifecycle", text)
         self.assertIn("styles.css", text)
 
     def test_write_receipt_script_is_safe_shell_script(self):
@@ -87,6 +107,18 @@ class TestLocalLabContract(unittest.TestCase):
         self.assertIn("set -euo pipefail", text)
         self.assertIn("receipts/", text)
         self.assertIn("date -Iseconds", text)
+
+    def test_lifecycle_scripts_are_safe_shell_scripts(self):
+        for rel in [
+            "scripts/show_local_stack.sh",
+            "scripts/logs_receipt.sh",
+            "scripts/container_lifecycle_receipt.sh",
+        ]:
+            text = (ROOT / rel).read_text(encoding="utf-8")
+            self.assertIn("set -euo pipefail", text)
+        lifecycle = (ROOT / "scripts/container_lifecycle_receipt.sh").read_text(encoding="utf-8")
+        self.assertIn("docker compose down", lifecycle)
+        self.assertIn("trap cleanup EXIT", lifecycle)
 
     def test_github_actions_runs_make_verify(self):
         text = (ROOT / ".github/workflows/verify.yml").read_text(encoding="utf-8")
