@@ -8,6 +8,16 @@ This repo teaches practical cloud-adjacent skills without requiring a paid cloud
 
 You will learn how to run a small website-like stack locally, inspect logs, manage files, use Docker, and build habits that later transfer to a real Ubuntu VPS.
 
+## Quickstart
+
+Start here:
+
+- [Quickstart](docs/quickstart.md)
+- [Learning Contract](docs/learning-contract.md)
+- [Book Series Plan](docs/book-series-plan.md)
+
+The first lab runs locally with Docker and does not require a paid cloud account.
+
 ## Who this is for
 
 This lab is for independent creators, writers, students, small publishers, and careful beginners who want to understand the tools behind small web platforms and digital storefronts.
