@@ -1,4 +1,6 @@
 # local receipts and temp output
+backups/*.tar.gz
+backups/*.tar.gz.sha256
 receipts/*.txt
 !receipts/samples/*.txt
 .tmp/
