@@ -4,12 +4,39 @@
   <meta charset="utf-8">
   <title>Ubuntu Cloud Skills Local Lab</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <main>
-    <h1>Ubuntu Cloud Skills Local Lab</h1>
-    <p>This local site is running from a Docker-powered learning lab.</p>
-    <p>If you can see this page, the first proof-first web server exercise worked.</p>
+  <main class="page-shell">
+    <section class="hero">
+      <p class="eyebrow">NEKpress.ca Local Lab</p>
+      <p class="demo-label">Independent creator publishing demo</p>
+      <h1>Ubuntu Cloud Skills Local Lab</h1>
+      <p class="lede">A tiny independent creator publishing demo running from Docker on your own machine.</p>
+    </section>
+
+    <section class="card-grid" aria-label="Local publishing demo sections">
+      <article class="card">
+        <h2>Sample Digital Book</h2>
+        <p><strong>The Local Cloud Notebook</strong></p>
+        <p>This placeholder product teaches the structure of a creator storefront without payments, customer data, or a paid cloud account.</p>
+      </article>
+
+      <article class="card">
+        <h2>What Docker Is Doing</h2>
+        <p>The web container serves the files in <code>public/</code>. Editing those files changes the local site.</p>
+      </article>
+
+      <article class="card">
+        <h2>Proof-First Habit</h2>
+        <p>Run <code>make lab-smoke-receipt</code> to prove the local site responded and save a receipt in <code>receipts/</code>.</p>
+      </article>
+    </section>
+
+    <section class="next-step">
+      <h2>Next Step</h2>
+      <p>Learn the workflow in <code>lessons/01-local-publishing-stack.md</code>, then stop the lab with <code>make down</code>.</p>
+    </section>
   </main>
 </body>
 </html>

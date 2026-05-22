@@ -1,0 +1,17 @@
+Ubuntu Cloud Skills Local Lab receipt
+Created: 2026-05-22T09:00:00-07:00
+Label: local-web-smoke
+
+Local web smoke-test receipt
+
+Command: make lab-smoke-receipt
+
+The local site responded at http://localhost:8080.
+The web service was running in Docker Compose.
+The lab can be stopped with make down.
+
+Notes:
+
+- This is a sample receipt.
+- Real receipts belong in receipts/*.txt and are ignored by Git.
+- Do not include secrets in receipts.

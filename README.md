@@ -13,10 +13,18 @@ You will learn how to run a small website-like stack locally, inspect logs, mana
 Start here:
 
 - [Quickstart](docs/quickstart.md)
+- [Lesson 1: Local Publishing Stack](lessons/01-local-publishing-stack.md)
+- [Proof Receipts](docs/proof-receipts.md)
 - [Learning Contract](docs/learning-contract.md)
 - [Book Series Plan](docs/book-series-plan.md)
 
 The first lab runs locally with Docker and does not require a paid cloud account.
+
+## Lessons
+
+- [Lesson 1: Local Publishing Stack](lessons/01-local-publishing-stack.md)
+
+Lesson 1 turns the simple web server into a tiny independent creator publishing demo. It introduces the key pattern for the series: edit local site files, run the site in Docker, verify the result, inspect logs, save receipts, and stop the lab cleanly.
 
 ## Who this is for
 
@@ -51,7 +59,7 @@ This is a local-first Ubuntu cloud-skills lab. Later books may show how the same
 Run a tiny local publishing stack:
 
 - a web server container
-- a simple static site
+- a simple static creator site
 - local logs
 - a repeatable Makefile workflow
 - proof receipts showing what worked
