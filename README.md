@@ -8,6 +8,22 @@ This repo teaches practical cloud-adjacent skills without requiring a paid cloud
 
 You will learn how to run a small website-like stack locally, inspect logs, manage files, use Docker, and build habits that later transfer to a real Ubuntu VPS.
 
+## Book 1 readers
+
+This repository is the public companion lab for **Book 1** of *Ubuntu Cloud Skills for Independent Creators*:
+
+**Your First Local Cloud Lab with Ubuntu and Docker**
+
+If you are reading Book 1, use the matching companion-code release instead of assuming the latest `main` branch is identical to the printed book:
+
+- Book 1 code tag: `book1-v1.0.0`
+- Book 1 release: <https://github.com/nicholaskarlson/ubuntu-cloud-skills-local-lab/releases/tag/book1-v1.0.0>
+- Exact Book 1 code commit: `88ff6452419bd027f31cb6e7a6799f5ed0695765`
+
+The `main` branch may continue to change as the series grows. The Book 1 tag preserves the lab version that matches the commands and lessons in the book.
+
+See [Book 1 Companion Code](docs/book1-companion-code.md) for clone, checkout, and source-ZIP instructions.
+
 ## Quickstart
 
 Start here:

@@ -18,6 +18,7 @@ class TestLocalLabContract(unittest.TestCase):
             "docs/book-series-plan.md",
             "docs/quickstart.md",
             "docs/proof-receipts.md",
+            "docs/book1-companion-code.md",
             "lessons/01-local-publishing-stack.md",
             "lessons/02-files-logs-container-lifecycle.md",
             "lessons/03-local-backups-and-restore.md",
@@ -54,6 +55,17 @@ class TestLocalLabContract(unittest.TestCase):
         )
         self.assertIn("[Lesson 3: Local Backups and Restore](lessons/03-local-backups-and-restore.md)", text)
         self.assertIn("[Proof Receipts](docs/proof-receipts.md)", text)
+
+
+    def test_book1_companion_code_pin_is_documented(self):
+        readme = (ROOT / "README.md").read_text(encoding="utf-8")
+        doc = (ROOT / "docs/book1-companion-code.md").read_text(encoding="utf-8")
+        for text in [readme, doc]:
+            self.assertIn("book1-v1.0.0", text)
+            self.assertIn("88ff6452419bd027f31cb6e7a6799f5ed0695765", text)
+            self.assertIn("Book 1", text)
+        self.assertIn("main branch may continue to change", doc)
+        self.assertIn("git checkout book1-v1.0.0", doc)
 
     def test_compose_uses_local_web_port(self):
         text = (ROOT / "compose.yaml").read_text(encoding="utf-8")
