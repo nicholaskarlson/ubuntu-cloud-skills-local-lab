@@ -5,7 +5,7 @@ help:
 	@echo "  make verify             - run local repo checks; does not require Docker"
 	@echo "  make doctor             - run safe, non-deploying repo health checks"
 	@echo "  make repo-map           - print the repo map and reader path"
-	@echo "  make series-status      - print book-by-book software status
+	@echo "  make series-status      - print book-by-book software status"
 	@echo "  make check-env          - check required local tools"
 	@echo "  make up                 - start the local web lab"
 	@echo "  make ps                 - show running containers"

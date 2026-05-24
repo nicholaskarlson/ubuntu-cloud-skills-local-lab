@@ -36,6 +36,7 @@ check_file docs/secret-safety.md
 check_file scripts/doctor.sh
 check_file scripts/repo_map.sh
 check_file tests/test_series_foundation.py
+check_file tests/test_foundation_repair.py
 
 if [[ "$missing" -ne 0 ]]; then
   echo

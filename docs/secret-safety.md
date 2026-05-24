@@ -38,9 +38,9 @@ Cleanup: make down completed
 Bad receipt content:
 
 ```text
-STRIPE_SECRET_KEY=...
-AWS_SECRET_ACCESS_KEY=...
------BEGIN OPENSSH PRIVATE KEY-----
+payment service secret: [redacted value that must not be saved]
+cloud provider access secret: [redacted value that must not be saved]
+ssh private key material: [redacted block that must not be saved]
 ```
 
 ## Logs must be treated carefully

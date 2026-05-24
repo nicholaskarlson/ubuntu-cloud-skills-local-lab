@@ -102,6 +102,7 @@ Backups:
 Tests:
   tests/test_contract.py
   tests/test_series_foundation.py
+  tests/test_foundation_repair.py
 TEXT
 
 echo
