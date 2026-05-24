@@ -35,8 +35,33 @@ Start here:
 - [Proof Receipts](docs/proof-receipts.md)
 - [Learning Contract](docs/learning-contract.md)
 - [Book Series Plan](docs/book-series-plan.md)
+- [Series Roadmap](docs/series-roadmap.md)
+- [Software Architecture](docs/software-architecture.md)
+- [Release and Tagging Policy](docs/release-and-tagging-policy.md)
+- [Secret Safety](docs/secret-safety.md)
 
 The first labs run locally with Docker and do not require a paid cloud account.
+
+## Series foundation
+
+This repository is now organized as the continuing companion repo for the Ubuntu Cloud Skills series. Book-specific tags preserve the exact code for a printed or Kindle book, while `main` can continue to evolve in small, tested increments.
+
+Foundation references:
+
+- [Series Roadmap](docs/series-roadmap.md)
+- [Software Architecture](docs/software-architecture.md)
+- [Release and Tagging Policy](docs/release-and-tagging-policy.md)
+- [Secret Safety](docs/secret-safety.md)
+
+Useful safe inspection commands:
+
+```bash
+make doctor
+make repo-map
+make series-status
+```
+
+`make doctor` runs safe, non-deploying checks and prints next recommended commands. It does not start Docker, write receipts, create backups, deploy to a server, or require a paid cloud account.
 
 ## Lessons
 

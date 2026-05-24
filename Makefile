@@ -1,8 +1,11 @@
-.PHONY: help verify check-env up down logs ps inspect-stack lab-smoke lab-smoke-receipt logs-receipt lifecycle-receipt backup-public backup-receipt restore-public backup-list receipt-version receipt-note clean
+.PHONY: help verify check-env up down logs ps inspect-stack lab-smoke lab-smoke-receipt logs-receipt lifecycle-receipt backup-public backup-receipt restore-public backup-list receipt-version receipt-note clean doctor repo-map series-status
 
 help:
 	@echo "Targets:"
 	@echo "  make verify             - run local repo checks; does not require Docker"
+	@echo "  make doctor             - run safe, non-deploying repo health checks"
+	@echo "  make repo-map           - print the repo map and reader path"
+	@echo "  make series-status      - print book-by-book software status
 	@echo "  make check-env          - check required local tools"
 	@echo "  make up                 - start the local web lab"
 	@echo "  make ps                 - show running containers"
@@ -20,6 +23,16 @@ help:
 	@echo "  make receipt-version    - save Docker version receipt"
 	@echo "  make receipt-note       - write a manual receipt from stdin"
 	@echo "  make clean              - stop lab and remove local temp files"
+
+
+doctor:
+	bash scripts/doctor.sh
+
+repo-map:
+	bash scripts/repo_map.sh
+
+series-status:
+	bash scripts/repo_map.sh --series-status
 
 verify:
 	python3 -m unittest discover -s tests -v
