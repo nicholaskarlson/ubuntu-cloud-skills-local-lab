@@ -18,9 +18,15 @@ Release tag:
 book1-v1.0.0
 ```
 
-## Book 2 — Your First Ubuntu Cloud Server
+## Book 2 — Your First Ubuntu Server Lab
 
-Move the same habits to a real Ubuntu VPS: SSH keys, non-root user, updates, firewall, Caddy or Nginx, public IP or domain, HTTPS, deploy from Git, server logs, server smoke test, server backup, restore drill, cost cleanup, and deployment receipts.
+Practice VPS-style skills safely at home before renting a cloud server.
+
+The default path is LAN-first: one Ubuntu client machine connects to one Ubuntu server machine on the same private network. The server machine can be an Ubuntu laptop, old desktop, mini PC, Raspberry Pi-style Linux box, VM, or other local Ubuntu host.
+
+Core skills: SSH readiness, users, updates, firewall posture, service inspection, logs, local-network deployment, smoke checks, backup, restore, cleanup, and safe receipts.
+
+A rented VPS remains an optional migration path, not a requirement for the core Book 2 learning path.
 
 Planned release tag:
 
@@ -28,11 +34,11 @@ Planned release tag:
 book2-v1.0.0
 ```
 
-Current scaffold: Book 2 planning docs and Lesson 4 now define the safety boundary before live VPS automation is added.
+Current scaffold: Book 2 now has a LAN-first pivot, safety boundary, LAN lab guide, optional VPS checklist, and safe input-check targets. No live SSH, deployment, firewall mutation, DNS, HTTPS, router port-forwarding, or provider automation has been added yet.
 
 ## Book 3 — Publish Your Creator Website on Ubuntu
 
-Grow the static creator site: content files, simple site generation, book/product/resource pages, local preview, link checking, accessibility smoke checks, deploy to VPS, maintenance receipts, backup, and restore.
+Grow the static creator site: content files, simple site generation, book/product/resource pages, local preview, link checking, accessibility smoke checks, deploy first to the LAN server lab, optional public publishing later, maintenance receipts, backup, and restore.
 
 Planned release tag:
 
@@ -44,6 +50,8 @@ book3-v1.0.0
 
 Add bookstore-shaped workflows carefully: product metadata, static product pages, protected or semi-protected download concepts, order/fulfillment concepts, receipt records, backup, restore, and safer customer-data boundaries.
 
+The core path should remain local-first and should not require real customer data or real public hosting.
+
 Planned release tag:
 
 ```text
@@ -52,7 +60,7 @@ book4-v1.0.0
 
 ## Book 5 — Stripe Checkout for Independent Creators
 
-Add payments only when the reader is ready: hosted checkout, test mode first, webhook verification, idempotent fulfillment, safe receipt/log design, no card storage, refund/support workflow, secret scanning/checks, and a test-mode preflight.
+Add payments only when the reader is ready: hosted checkout, test mode first, local webhook practice, webhook verification, idempotent fulfillment, safe receipt/log design, no card storage, refund/support workflow, secret scanning/checks, and a test-mode preflight.
 
 Planned release tag:
 
@@ -60,9 +68,11 @@ Planned release tag:
 book5-v1.0.0
 ```
 
-## Book 6 — AWS Skills for Ubuntu Creators
+## Book 6 — Cloud Skills for Ubuntu Creators
 
-Add provider-specific cloud skills carefully: AWS CLI, named profiles, IAM basics, S3, free-tier-aware practice, safe cleanup, receipts, cost awareness, and no secret leakage.
+Add cloud migration skills carefully and portably: provider comparison, public hosting options, object storage concepts, named profiles where relevant, IAM/least-privilege thinking where relevant, free-tier-aware practice, safe cleanup, receipts, cost awareness, and no secret leakage.
+
+AWS may appear as one optional provider path. It should not be required for the core series promise.
 
 Planned release tag:
 

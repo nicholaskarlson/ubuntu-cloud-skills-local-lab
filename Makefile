@@ -1,4 +1,4 @@
-.PHONY: help verify check-env up down logs ps inspect-stack lab-smoke lab-smoke-receipt logs-receipt lifecycle-receipt backup-public backup-receipt restore-public backup-list receipt-version receipt-note clean doctor repo-map series-status
+.PHONY: help verify check-env up down logs ps inspect-stack lab-smoke lab-smoke-receipt logs-receipt lifecycle-receipt backup-public backup-receipt restore-public backup-list receipt-version receipt-note clean doctor repo-map series-status book2-doctor book2-check-inputs book2-lan-ip-help
 
 help:
 	@echo "Targets:"
@@ -6,6 +6,9 @@ help:
 	@echo "  make doctor             - run safe, non-deploying repo health checks"
 	@echo "  make repo-map           - print the repo map and reader path"
 	@echo "  make series-status      - print book-by-book software status"
+	@echo "  make book2-doctor      - run safe Book 2 LAN-first readiness checks"
+	@echo "  make book2-check-inputs - validate Book 2 local environment inputs without connecting"
+	@echo "  make book2-lan-ip-help - show how to find a server machine LAN IP"
 	@echo "  make check-env          - check required local tools"
 	@echo "  make up                 - start the local web lab"
 	@echo "  make ps                 - show running containers"
@@ -33,6 +36,15 @@ repo-map:
 
 series-status:
 	bash scripts/repo_map.sh --series-status
+
+book2-doctor:
+	bash scripts/book2_doctor.sh
+
+book2-check-inputs:
+	bash scripts/book2_check_inputs.sh
+
+book2-lan-ip-help:
+	bash scripts/book2_lan_ip_help.sh
 
 verify:
 	python3 -m unittest discover -s tests -v

@@ -40,8 +40,14 @@ check_file tests/test_foundation_repair.py
 check_file docs/book2-companion-code.md
 check_file docs/book2-server-safety-boundary.md
 check_file docs/book2-vps-checklist.md
+check_file docs/book2-lan-server-lab.md
 check_file lessons/04-first-ubuntu-server-safety.md
+check_file book2/env.example
+check_file scripts/book2_doctor.sh
+check_file scripts/book2_check_inputs.sh
+check_file scripts/book2_lan_ip_help.sh
 check_file tests/test_book2_scaffold.py
+check_file tests/test_book2_lan_pivot.py
 
 if [[ "$missing" -ne 0 ]]; then
   echo
@@ -95,7 +101,10 @@ echo "  make repo-map"
 echo "  make series-status"
 echo "  make check-env      # when ready to check Docker availability"
 echo "  make up             # starts the local web lab; not run by doctor"
-echo "  Read docs/book2-server-safety-boundary.md before adding live VPS commands"
+echo "  make book2-doctor   # safe LAN-first Book 2 readiness check"
+echo "  make book2-check-inputs"
+echo "  make book2-lan-ip-help"
+echo "  Read docs/book2-lan-server-lab.md before adding live SSH commands"
 echo
 
 echo "OK: doctor completed"

@@ -1,27 +1,34 @@
-# Book 2 VPS Checklist
+# Book 2 Optional VPS Checklist
 
-This checklist defines the planned Book 2 server path before any live automation is added.
+This file keeps the earlier Book 2 VPS checklist visible, but the Book 2 default path has changed.
 
-It is a teaching checklist, not a provider signup guide.
+Book 2 is now LAN-first. A rented VPS is optional.
 
-## Before creating a VPS
+The core path should teach the same habits on a private local network before requiring DigitalOcean, AWS, another paid provider, a domain name, public DNS, HTTPS, or public SSH exposure.
+
+For backward compatibility with the earlier scaffold: no live VPS automation is included yet.
+
+## Before renting a VPS
 
 Confirm that the reader understands:
 
 - Book 1 local workflow,
+- Book 2 LAN server workflow,
 - `make verify`,
 - `make doctor`,
+- `make book2-doctor`,
 - receipts,
 - local backup and restore,
 - Git basics,
 - what an SSH key is,
-- why private keys must stay private,
-- that a VPS can cost money while it exists, and
-- that public servers need more care than local containers.
+- why SSH private keys must stay private,
+- that a VPS can cost money while it exists,
+- that public servers need more care than local machines, and
+- that a provider dashboard is where paid resources are usually destroyed.
 
-## Minimum server expectations
+## Minimum optional VPS expectations
 
-A Book 2 server should be:
+A Book 2 optional VPS should be:
 
 - Ubuntu LTS,
 - reachable by SSH,
@@ -32,9 +39,9 @@ A Book 2 server should be:
 - not used for payment handling,
 - not used as the only copy of important files.
 
-## Planned setup phases
+## Optional migration phases
 
-Book 2 should be developed in phases:
+If a reader chooses a VPS later, the path should still be phased:
 
 1. Readiness and safety boundary.
 2. SSH connection check.
@@ -52,7 +59,7 @@ Book 2 should be developed in phases:
 
 ## Domain and HTTPS path
 
-Book 2 can support two paths:
+A future VPS or public-hosting path can support two stages:
 
 - IP-only HTTP practice for early learning.
 - Domain-based HTTPS practice once DNS is ready.
@@ -76,9 +83,9 @@ Book 2 software is not complete until it includes:
 - clear docs,
 - safe local verification,
 - explicit server input checks,
-- SSH inspection,
+- LAN-first SSH inspection,
 - deployment dry-run,
-- public deployment,
+- LAN deployment,
 - smoke test,
 - server log receipt,
 - backup,
@@ -88,3 +95,5 @@ Book 2 software is not complete until it includes:
 - tests,
 - release checklist, and
 - `book2-v1.0.0` tagging instructions.
+
+Provider-specific public deployment can be an appendix or optional migration path, not a requirement for Book 2 completion.

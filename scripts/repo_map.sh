@@ -15,15 +15,15 @@ Book 1 — Your First Local Cloud Lab with Ubuntu and Docker
   Stable tag: book1-v1.0.0
   Layer: local Docker lab, static creator page, logs, receipts, backup, restore, cleanup.
 
-Book 2 — Your First Ubuntu Cloud Server
-  Status: planning scaffold added. No live VPS automation yet.
+Book 2 — Your First Ubuntu Server Lab
+  Status: LAN-first pivot added. Safe readiness and input checks exist; no live SSH or deployment automation yet.
   Planned tag: book2-v1.0.0
-  Layer: safety boundary, VPS checklist, SSH, non-root user, updates, firewall, HTTPS, deploy from Git, server logs, backup, restore, cost cleanup.
+  Layer: private LAN server lab, SSH readiness, server safety boundary, optional VPS migration later, logs, backup, restore, cleanup.
 
 Book 3 — Publish Your Creator Website on Ubuntu
   Status: planned.
   Planned tag: book3-v1.0.0
-  Layer: content files, site generation, local preview, link checks, accessibility smoke checks, deploy and maintenance receipts.
+  Layer: content files, site generation, local preview, link checks, accessibility smoke checks, LAN deployment first, optional public publishing later.
 
 Book 4 — Build a DIY Digital Bookstore
   Status: planned.
@@ -33,12 +33,12 @@ Book 4 — Build a DIY Digital Bookstore
 Book 5 — Stripe Checkout for Independent Creators
   Status: planned.
   Planned tag: book5-v1.0.0
-  Layer: hosted checkout, test mode first, webhook verification, idempotent fulfillment, no card storage, safe logs and receipts.
+  Layer: hosted checkout, test mode first, local webhook practice, webhook verification, idempotent fulfillment, no card storage, safe logs and receipts.
 
-Book 6 — AWS Skills for Ubuntu Creators
+Book 6 — Cloud Skills for Ubuntu Creators
   Status: planned.
   Planned tag: book6-v1.0.0
-  Layer: AWS CLI, named profiles, IAM basics, S3, free-tier-aware practice, cleanup, receipts, and cost awareness.
+  Layer: portable cloud migration skills, optional provider paths, storage, cleanup, receipts, and cost awareness.
 TEXT
 }
 
@@ -59,6 +59,7 @@ Reader-facing entry points:
   docs/release-and-tagging-policy.md
   docs/secret-safety.md
   docs/book2-companion-code.md
+  docs/book2-lan-server-lab.md
   docs/book2-server-safety-boundary.md
   docs/book2-vps-checklist.md
 
@@ -67,11 +68,13 @@ Book 1 lessons:
   lessons/02-files-logs-container-lifecycle.md
   lessons/03-local-backups-and-restore.md
 
-Book 2 planning scaffold:
+Book 2 LAN-first scaffold:
   docs/book2-companion-code.md
+  docs/book2-lan-server-lab.md
   docs/book2-server-safety-boundary.md
   docs/book2-vps-checklist.md
   lessons/04-first-ubuntu-server-safety.md
+  book2/env.example
 
 Local site files:
   public/index.html
@@ -87,6 +90,9 @@ Command surface:
   make up / make down
   make lab-smoke
   make backup-public / make restore-public
+  make book2-doctor
+  make book2-check-inputs
+  make book2-lan-ip-help
 
 Scripts:
   scripts/check_env.sh
@@ -99,6 +105,9 @@ Scripts:
   scripts/restore_public_backup.sh
   scripts/doctor.sh
   scripts/repo_map.sh
+  scripts/book2_doctor.sh
+  scripts/book2_check_inputs.sh
+  scripts/book2_lan_ip_help.sh
 
 Receipts:
   receipts/samples/    safe examples committed to Git
@@ -113,6 +122,7 @@ Tests:
   tests/test_series_foundation.py
   tests/test_foundation_repair.py
   tests/test_book2_scaffold.py
+  tests/test_book2_lan_pivot.py
 TEXT
 
 echo

@@ -12,6 +12,7 @@ The line should grow slowly, with one stable software layer per book. The goal i
 - No secrets in Git.
 - No secrets in receipts.
 - No paid cloud required for Book 1.
+- No paid cloud required for the core Book 2 LAN path.
 - No Docker Pro requirement for readers.
 - Provider portable.
 - Inspect before guessing.
@@ -20,18 +21,18 @@ The line should grow slowly, with one stable software layer per book. The goal i
 - Test before trusting.
 - Backup plus restore, not backup alone.
 - Stop what you start.
-- Add public exposure, payment, customer data, and vendor-specific services only when the reader is ready.
+- Add public exposure, payment, customer data, router port forwarding, and vendor-specific services only when the reader is ready.
 
 ## Book-by-book roadmap
 
 | Book | Software layer | Reader result | Release tag |
 | --- | --- | --- | --- |
 | 1 | Local Docker lab | Run, inspect, back up, restore, and stop a local creator web lab | `book1-v1.0.0` |
-| 2 | Ubuntu VPS foundation | Move the same proof-first habits to a real server safely | `book2-v1.0.0` |
-| 3 | Creator website | Maintain and deploy a useful creator site from source-controlled content | `book3-v1.0.0` |
-| 4 | DIY digital bookstore | Model products, downloads, fulfillment records, and safer data boundaries | `book4-v1.0.0` |
-| 5 | Stripe Checkout | Use hosted checkout, test mode, webhooks, idempotent fulfillment, and safe logs | `book5-v1.0.0` |
-| 6 | AWS skills | Practice AWS CLI, IAM basics, S3, cleanup, and cost awareness safely | `book6-v1.0.0` |
+| 2 | LAN-first Ubuntu server lab | Practice VPS-style SSH, server inspection, logs, backup, and restore safely at home | `book2-v1.0.0` |
+| 3 | Creator website | Maintain and deploy a useful creator site locally first, with optional public publishing later | `book3-v1.0.0` |
+| 4 | DIY digital bookstore | Model products, downloads, fulfillment records, and safer data boundaries locally first | `book4-v1.0.0` |
+| 5 | Stripe Checkout | Use hosted checkout, test mode, local webhook practice, idempotent fulfillment, and safe logs | `book5-v1.0.0` |
+| 6 | Cloud skills | Practice portable cloud migration, storage, cleanup, and cost awareness after the local lab is understood | `book6-v1.0.0` |
 
 ## What stays stable
 
@@ -63,7 +64,24 @@ Book 1 remains a local lab. It should not require:
 - a customer database, or
 - real public exposure.
 
-Later books may add those topics, but only after the repo has made the safety boundary clear.
+## Book 2 boundary
+
+Book 2 should default to a private LAN server lab.
+
+It should not require:
+
+- DigitalOcean,
+- AWS,
+- any paid VPS,
+- a domain name,
+- public DNS,
+- router port forwarding,
+- public SSH exposure,
+- payment handling,
+- customer data, or
+- production uptime.
+
+A VPS can be offered later as an optional migration path for readers who already understand the local server habit.
 
 ## First foundation commands
 
@@ -74,6 +92,14 @@ make verify
 make doctor
 make repo-map
 make series-status
+```
+
+For the Book 2 LAN-first path, start with:
+
+```bash
+make book2-doctor
+make book2-check-inputs
+make book2-lan-ip-help
 ```
 
 These commands keep the project aligned with the NEKpress.ca style: practical, calm, reader-focused, proof-first, beginner-safe, test-driven, and conservative around secrets, public exposure, payments, and customer data.

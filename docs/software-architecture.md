@@ -6,11 +6,11 @@ The architecture grows in layers:
 
 ```text
 Book 1: local files + Docker Compose + receipts + backup/restore
-Book 2: same habits on a real Ubuntu VPS
-Book 3: creator website content and deploy rhythm
-Book 4: bookstore-shaped product and download workflows
+Book 2: same habits on a LAN-first Ubuntu server lab
+Book 3: creator website content and deploy rhythm, local first
+Book 4: bookstore-shaped product and download workflows, local first
 Book 5: Stripe Checkout test-mode payment workflow
-Book 6: AWS CLI and S3 practice with cleanup and cost awareness
+Book 6: portable cloud migration skills, with AWS as optional rather than required
 ```
 
 ## Current Book 1 layer
@@ -31,19 +31,31 @@ This layer teaches the core proof-first loop:
 edit files -> start service -> inspect -> test -> save evidence -> restore/cleanup
 ```
 
-## Current Book 2 planning scaffold
+## Current Book 2 LAN-first layer
 
-Book 2 planning has started with documentation and tests rather than live server automation.
+Book 2 has pivoted to a LAN-first server lab.
 
-The scaffold adds:
+The default model is:
+
+```text
+Ubuntu client machine -> SSH later -> Ubuntu server machine on the same private LAN
+```
+
+The server machine can be a spare laptop, old desktop, mini PC, VM, or other Ubuntu host. A rented VPS remains optional later, but is not required for the core Book 2 path.
+
+The current layer adds:
 
 - the Book 2 companion-code note,
+- the LAN server lab guide,
 - the server safety boundary,
-- the VPS checklist,
-- the first Book 2 lesson, and
-- contract tests that keep the scaffold visible in the repo map and doctor workflow.
+- the optional VPS checklist,
+- the first Book 2 lesson,
+- a `book2/env.example` file for local non-secret settings,
+- safe Book 2 readiness and input-check scripts,
+- Makefile targets that do not connect to a server, and
+- contract tests that keep the pivot visible in the repo map and doctor workflow.
 
-This is deliberate. The repo should define the reader path before adding commands that connect to, deploy to, or mutate a real VPS.
+This is deliberate. The repo should define the reader path before adding commands that connect to, deploy to, or mutate another machine.
 
 ## Command surface principle
 
@@ -76,6 +88,7 @@ Avoid:
 - unexplained provider-specific tools,
 - secrets in command examples,
 - scripts that mutate cloud resources without a dry-run or preflight mindset,
+- router port forwarding in the beginner path,
 - payment or customer-data code before the reader has learned the safety model, and
 - clever abstractions that make the lesson harder to inspect.
 
@@ -97,7 +110,7 @@ The intended sequence is:
 
 Book 1 should stay local.
 
-Book 2 can introduce public server exposure, but should keep the domain, firewall, HTTPS, logs, backup, restore, and cleanup workflow explicit.
+Book 2 should stay LAN-first by default. It can teach VPS-style habits without public exposure, router port forwarding, paid hosting, or provider-specific accounts.
 
 Book 3 can add real website maintenance, but should still be source-controlled and locally previewable.
 
@@ -105,4 +118,4 @@ Book 4 can introduce digital-product workflows, but should avoid careless custom
 
 Book 5 can introduce Stripe, but should use hosted checkout, test mode first, webhook verification, idempotent fulfillment, no card storage, and safe receipts.
 
-Book 6 can introduce AWS, but should use named profiles, least-privilege thinking, cost awareness, and cleanup receipts.
+Book 6 can introduce cloud providers, but should use named profiles where relevant, least-privilege thinking, cost awareness, and cleanup receipts. AWS should be optional, not required for the core series.

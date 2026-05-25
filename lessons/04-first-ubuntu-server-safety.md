@@ -1,97 +1,125 @@
-# Lesson 4: First Ubuntu Server Safety
+# Lesson 4 — First Ubuntu Server Safety
 
-Book 1 stayed local. Book 2 begins the move to a real Ubuntu server.
+Book 2 starts here.
 
-This lesson is a safety and planning lesson. It does not require a VPS yet.
+The goal is not to rent a server immediately.
 
-## Goal
+The goal is to understand the safety boundary before one machine starts managing another machine.
 
-By the end of this lesson, you should understand the difference between:
+## The Book 2 pivot
 
-```text
-local lab work
-```
+Book 2 is LAN-first.
 
-and
+That means the preferred practice setup is:
 
 ```text
-public server work
+Ubuntu client machine -> private home network -> Ubuntu server machine
 ```
 
-A local lab is forgiving. A public server needs more care.
+Examples:
 
-## The Book 1 habit still applies
+- desktop to laptop,
+- laptop to old desktop,
+- desktop to mini PC,
+- host machine to Ubuntu VM.
 
-Book 1 taught this rhythm:
+A rented VPS can still be useful later, but it is not required for the core learning path.
 
-```text
-inspect -> run -> verify -> save safe evidence -> clean up
-```
+## Why this matters
 
-Book 2 keeps the same rhythm, but the commands become more serious because some of them may affect a real server.
+A public VPS adds risk too early:
 
-## Local or remote?
+- billing,
+- public SSH exposure,
+- DNS confusion,
+- domain and HTTPS timing,
+- provider-specific dashboards,
+- root login mistakes,
+- accidental long-running resources.
 
-Before running a command in Book 2, ask:
+A LAN server lab keeps the learning path calmer:
 
-1. Does this run on my local machine?
-2. Does this run on the server?
-3. Does this only inspect?
-4. Does this change files, packages, services, firewall rules, or public exposure?
-5. Can I undo it?
-6. What safe receipt would prove it worked?
+- no paid cloud account,
+- no DigitalOcean requirement,
+- no AWS requirement,
+- no router port forwarding,
+- no public DNS,
+- no public server exposure,
+- no real customer data.
 
-This question matters more than memorizing commands.
+You can still learn real server skills.
 
-## What not to save
+## Client and server
 
-Do not put these in Git or receipts:
+In Book 2 language:
 
-- SSH private keys,
-- passwords,
-- passphrases,
-- provider tokens,
-- raw secrets,
-- private customer data,
-- credential screenshots,
-- billing screenshots with private account details.
+- the **client** is the machine where you type the connecting command,
+- the **server** is the machine that accepts the connection.
 
-A safe receipt should prove the step without exposing access.
+A local laptop can act like a practice server even though it is not a true cloud VPS.
 
-## Planned Book 2 path
+That distinction is important: the command-line habit transfers, but public production hosting responsibilities come later.
 
-Book 2 should move in small steps:
+## Safe commands for this stage
 
-1. Confirm the repo is healthy.
-2. Read the server safety boundary.
-3. Prepare a disposable Ubuntu VPS.
-4. Confirm SSH access.
-5. Work as a non-root user.
-6. Update packages.
-7. Inspect firewall posture.
-8. Serve the creator site.
-9. Run a smoke test.
-10. Inspect logs.
-11. Save safe receipts.
-12. Back up the deployed site.
-13. Practice restore.
-14. Clean up paid resources when finished.
-
-## First commands for this scaffold
-
-For now, use only safe local inspection commands:
+From the repo root, run:
 
 ```bash
 make verify
 make doctor
-make repo-map
-make series-status
+make book2-doctor
+make book2-check-inputs
+make book2-lan-ip-help
 ```
+
+These commands are safe. They do not connect to a server, install packages, change firewall rules, open router ports, deploy files, or write receipts.
+
+## Local settings
+
+Book 2 includes a template:
+
+```text
+book2/env.example
+```
+
+For your own machine, copy it to an ignored local file:
+
+```bash
+cp book2/env.example .env.local
+```
+
+Then edit `.env.local` later when a lesson asks you to do so.
+
+Do not commit `.env.local`.
+
+## What this lesson does not do
+
+This lesson does not require a VPS yet.
 
 No Book 2 command in this scaffold connects to a server.
 
-## Stop point
+This lesson does not ask you to run:
 
-Stop here until the next Book 2 drop-in adds explicit readiness checks.
+- package-install commands,
+- firewall-open commands,
+- SSH commands,
+- DNS commands,
+- HTTPS commands,
+- router port-forwarding steps, or
+- provider dashboard steps.
 
-The next code increment should still be conservative: it should check local inputs and explain what would be needed for a VPS, not mutate a remote server.
+Those actions belong in later lessons, after the boundary is clear.
+
+## Proof-first checkpoint
+
+At the end of this lesson, you should be able to explain:
+
+1. Which machine is the client?
+2. Which machine will be the server?
+3. Are both machines on the same private LAN?
+4. Why are we avoiding router port forwarding?
+5. Why are we not starting with DigitalOcean or AWS?
+6. Which files contain safe Book 2 guidance?
+7. Which commands are safe and non-mutating?
+
+This is the right first step for Book 2: learn the boundary before crossing it.
