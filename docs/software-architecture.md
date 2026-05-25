@@ -31,6 +31,20 @@ This layer teaches the core proof-first loop:
 edit files -> start service -> inspect -> test -> save evidence -> restore/cleanup
 ```
 
+## Current Book 2 planning scaffold
+
+Book 2 planning has started with documentation and tests rather than live server automation.
+
+The scaffold adds:
+
+- the Book 2 companion-code note,
+- the server safety boundary,
+- the VPS checklist,
+- the first Book 2 lesson, and
+- contract tests that keep the scaffold visible in the repo map and doctor workflow.
+
+This is deliberate. The repo should define the reader path before adding commands that connect to, deploy to, or mutate a real VPS.
+
 ## Command surface principle
 
 Readers should mainly use `make` targets, not memorize long commands.

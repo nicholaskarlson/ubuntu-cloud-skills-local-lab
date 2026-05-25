@@ -16,9 +16,9 @@ Book 1 — Your First Local Cloud Lab with Ubuntu and Docker
   Layer: local Docker lab, static creator page, logs, receipts, backup, restore, cleanup.
 
 Book 2 — Your First Ubuntu Cloud Server
-  Status: planned; do not add VPS automation until the safety boundary and reader path are explicit.
+  Status: planning scaffold added. No live VPS automation yet.
   Planned tag: book2-v1.0.0
-  Layer: SSH, non-root user, updates, firewall, HTTPS, deploy from Git, server logs, backup, restore, cost cleanup.
+  Layer: safety boundary, VPS checklist, SSH, non-root user, updates, firewall, HTTPS, deploy from Git, server logs, backup, restore, cost cleanup.
 
 Book 3 — Publish Your Creator Website on Ubuntu
   Status: planned.
@@ -58,11 +58,20 @@ Reader-facing entry points:
   docs/software-architecture.md
   docs/release-and-tagging-policy.md
   docs/secret-safety.md
+  docs/book2-companion-code.md
+  docs/book2-server-safety-boundary.md
+  docs/book2-vps-checklist.md
 
 Book 1 lessons:
   lessons/01-local-publishing-stack.md
   lessons/02-files-logs-container-lifecycle.md
   lessons/03-local-backups-and-restore.md
+
+Book 2 planning scaffold:
+  docs/book2-companion-code.md
+  docs/book2-server-safety-boundary.md
+  docs/book2-vps-checklist.md
+  lessons/04-first-ubuntu-server-safety.md
 
 Local site files:
   public/index.html
@@ -103,6 +112,7 @@ Tests:
   tests/test_contract.py
   tests/test_series_foundation.py
   tests/test_foundation_repair.py
+  tests/test_book2_scaffold.py
 TEXT
 
 echo

@@ -37,6 +37,11 @@ check_file scripts/doctor.sh
 check_file scripts/repo_map.sh
 check_file tests/test_series_foundation.py
 check_file tests/test_foundation_repair.py
+check_file docs/book2-companion-code.md
+check_file docs/book2-server-safety-boundary.md
+check_file docs/book2-vps-checklist.md
+check_file lessons/04-first-ubuntu-server-safety.md
+check_file tests/test_book2_scaffold.py
 
 if [[ "$missing" -ne 0 ]]; then
   echo
@@ -90,6 +95,7 @@ echo "  make repo-map"
 echo "  make series-status"
 echo "  make check-env      # when ready to check Docker availability"
 echo "  make up             # starts the local web lab; not run by doctor"
+echo "  Read docs/book2-server-safety-boundary.md before adding live VPS commands"
 echo
 
 echo "OK: doctor completed"

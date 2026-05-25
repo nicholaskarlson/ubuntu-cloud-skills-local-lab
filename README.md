@@ -63,6 +63,17 @@ make series-status
 
 `make doctor` runs safe, non-deploying checks and prints next recommended commands. It does not start Docker, write receipts, create backups, deploy to a server, or require a paid cloud account.
 
+## Book 2 planning scaffold
+
+Book 2 planning has begun, but live VPS automation has not been added yet. The current scaffold documents the safety boundary and reader path before any SSH, deployment, firewall, DNS, HTTPS, or paid-server workflow enters the codebase.
+
+Book 2 references:
+
+- [Book 2 Companion Code](docs/book2-companion-code.md)
+- [Book 2 Server Safety Boundary](docs/book2-server-safety-boundary.md)
+- [Book 2 VPS Checklist](docs/book2-vps-checklist.md)
+- [Lesson 4: First Ubuntu Server Safety](lessons/04-first-ubuntu-server-safety.md)
+
 ## Lessons
 
 - [Lesson 1: Local Publishing Stack](lessons/01-local-publishing-stack.md)
@@ -74,6 +85,8 @@ Lesson 1 turns the simple web server into a tiny independent creator publishing 
 Lesson 2 slows down the workflow and teaches the daily rhythm of small server administration: inspect files, check service status, read logs, save log receipts, run a full container lifecycle receipt, and cleanly stop the lab.
 
 Lesson 3 introduces local backup and restore habits. It treats the `public/` site folder as a small publishing asset, saves a timestamped archive, records a checksum, and practices restoring the site before any real VPS or paid cloud account enters the picture.
+
+Lesson 4 starts Book 2 carefully. It explains the safety difference between a local lab and a public Ubuntu server, without connecting to a VPS or changing any remote system.
 
 ## Who this is for
 

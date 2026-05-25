@@ -28,6 +28,8 @@ Planned release tag:
 book2-v1.0.0
 ```
 
+Current scaffold: Book 2 planning docs and Lesson 4 now define the safety boundary before live VPS automation is added.
+
 ## Book 3 — Publish Your Creator Website on Ubuntu
 
 Grow the static creator site: content files, simple site generation, book/product/resource pages, local preview, link checking, accessibility smoke checks, deploy to VPS, maintenance receipts, backup, and restore.
